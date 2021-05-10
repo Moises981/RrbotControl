@@ -17,7 +17,7 @@ Where:
 
 Translational Equation:
 
-<img src="https://latex.codecogs.com/svg.image?E_t=\frac{1}{2}Mv_c^2"/> : Density
+<img src="https://latex.codecogs.com/svg.image?E_t=\frac{1}{2}Mv_c^2"/>
 
 Where:
 + <img src="https://latex.codecogs.com/svg.image?E_t"/> : Kinetic Energy 
