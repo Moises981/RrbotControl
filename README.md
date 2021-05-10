@@ -67,14 +67,36 @@ Where:
 + <img src="https://latex.codecogs.com/svg.image?\rho"/> : Density
 + <img src="https://latex.codecogs.com/svg.image?v"/> : Volume
 
+
+
 ## Box Dimmensions:
-+ Height: 
-+ Width:
-+ Depth: 
++ Height: 30cm
++ Width : 40cm
++ Depth : 50cm
+
+## Calculate Inertia from Torque
+
+Apply torque to rotate box:
+```
+rosrun box_properties apply_torque.py
+```
+
+**Equation:**
+
+<img src="https://latex.codecogs.com/svg.image?I=\frac{T\tau}{\omega-\omega_0}"/>
+
+Since <img src="https://latex.codecogs.com/svg.image?\omega_0=0"/> and <img src="https://latex.codecogs.com/svg.image?T=0"/>
+
+<img src="https://latex.codecogs.com/svg.image?I=\frac{\tau}{\omega}"/>
+
 
 ## Commands:
 
-Reset world
+Compute Inertia from Box:
+```
+rosrun box_properties compute_moments.py
+```
+Reset world:
 ```
 rosservice call /gazebo/reset_world "{}"
 ```
