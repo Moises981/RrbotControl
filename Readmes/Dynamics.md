@@ -32,4 +32,9 @@ Where:
 + <img src="https://latex.codecogs.com/svg.image?g"/> : Gravity
 + <img src="https://latex.codecogs.com/svg.image?h"/> : Height
 
+### Center of Mass Position XY of Joints - Explanation
+
 ![Center of Mass Location](Images/CenterPosition.jpg))
+
+
+

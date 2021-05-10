@@ -16,18 +16,16 @@ def twist2d(twist):
 def callback(msg_in):
     global pub
     
+    lenght = 1
+
     x2, y2, th2 = pose2d(msg_in.pose[2])
     vx2, vy2, w2 = twist2d(msg_in.twist[2])
     x3, y3, th3 = pose2d(msg_in.pose[3])
     vx3, vy3, w3 = twist2d(msg_in.twist[3])
-    #print(x2)
-    print(y2)
-    #print(x3)
-    print(y3)
-    # xc2 = 
-    # yc2 = 
-    # xc3 = 
-    # yc3 = 
+    xc2 = x2 + lenght/2 * math.sin(th2)
+    yc2 = y2 + lenght/2 * math.cos(th2)
+    xc3 = x3 + lenght/2 * math.sin(th3)
+    yc3 = y3 + lenght/2 * math.cos(th3)
     # vxc2 = 
     # vyc2 = 
     # vxc3 = 
