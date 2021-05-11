@@ -10,7 +10,7 @@ Where:
 
 <img src="https://latex.codecogs.com/svg.image?\mathcal{L}"/> : Langrangian of the robot defined as the difference between the Kinetic Energy <img src="https://latex.codecogs.com/svg.image?\mathcal{L} = \tau"/> and Potential Energy <img src="https://latex.codecogs.com/svg.image?V"/> :
 
-<img src="https://latex.codecogs.com/svg.image?\mathcal{L} = \tau-V"/>
+<img src="https://latex.codecogs.com/svg.image?\mathcal{L}=\tau-V"/>
 
 ## RRBOT
 
