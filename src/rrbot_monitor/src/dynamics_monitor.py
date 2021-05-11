@@ -15,33 +15,40 @@ def twist2d(twist):
 
 def callback(msg_in):
     global pub
-    
-    lenght = 1
+    global t
+    r = 0.5
 
     x2, y2, th2 = pose2d(msg_in.pose[2])
     vx2, vy2, w2 = twist2d(msg_in.twist[2])
     x3, y3, th3 = pose2d(msg_in.pose[3])
     vx3, vy3, w3 = twist2d(msg_in.twist[3])
-    xc2 = x2 + lenght/2 * math.sin(th2)
-    yc2 = y2 + lenght/2 * math.cos(th2)
-    xc3 = x3 + lenght/2 * math.sin(th3)
-    yc3 = y3 + lenght/2 * math.cos(th3)
-    # vxc2 = 
-    # vyc2 = 
-    # vxc3 = 
-    # vyc3 = 
-    # m = 1.0
-    # g = 9.81
-    # I = 0.084
-    # pe = 
-    # ke = 
+    xc2 = x2 + r * math.sin(th2)
+    yc2 = y2 + r * math.cos(th2)
+    xc3 = x3 + r * math.sin(th3)
+    yc3 = y3 + r * math.cos(th3)
+
+    # V = w * r
+    vyc2 = vy2 + r * w2 * math.cos(th2)
+    vxc2 = vx2 - r * w2 * math.sin(th2)
     
-    # data = [xc2,yc2,th2,vxc2,vyc2,w2,xc3,yc3,th3,vxc3,vyc3,w3,pe,ke]
-    # msg_out = Float32MultiArray(data=data)
-    # pub.publish(msg_out)
+    vyc3 = vy3 + r * w3 * math.cos(th3)
+    vxc3 = vx3 - r * w3 * math.sin(th3)
+    m = 1.0
+    g = 9.81
+    I = 0.084
+    pe = m*g*(yc2+yc3)
+    kr = I*math.pow(w2,2)/2 + I*math.pow(w3,2)/2 
+    kt = m*(math.pow(xc2,2)+math.pow(yc2,2))/2 + m*(math.pow(xc3,2)+math.pow(yc3,2))/2
+    ke = kt + kr
+    print(vxc2)
+        
+    data = [xc2,yc2,th2,vxc2,vyc2,w2,xc3,yc3,th3,vxc3,vyc3,w3,pe,ke]
+    msg_out = Float32MultiArray(data=data)
+    pub.publish(msg_out)
 
 if __name__ == '__main__':
     rospy.init_node('energy_monitor', anonymous=True)
     sub = rospy.Subscriber('/gazebo/link_states', LinkStates, callback)
     pub = rospy.Publisher('/dynamic_data', Float32MultiArray, queue_size=10)
+    t = 0
     rospy.spin()

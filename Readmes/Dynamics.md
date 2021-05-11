@@ -35,6 +35,23 @@ Where:
 ### Center of Mass Position XY of Joints - Explanation
 
 ![Center of Mass Location](Images/CenterPosition.jpg))
+Run command to monitore data:
+```
+rosrun rrbot_monitor dynamics_monitor.py
+```
+Run command to bag data:
+```
+rosservice call /gazebo/reset_simulation && \
+rosbag record /dynamic_data --duration=30 \
+  --output-name=data.bag
+```
+Run command to show plot:
+```
+rosrun rrbot_monitor bag_monitor.py
+```
+![Physics](Images/Plots.png))
+
+
 
 
 
